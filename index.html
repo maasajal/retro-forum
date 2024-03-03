@@ -68,7 +68,7 @@
               </li>
               <li>
                 <div class="tooltip" data-tip="Flag">
-                  <button class="btn btn-circle">
+                  <button class="btn btn-circle border-none">
                     <img src="./assets/images/flag-icon.png" alt="flag" />
                   </button>
                 </div>
@@ -110,8 +110,8 @@
         >
           <div class="hero-overlay bg-[#12132D] rounded-xl"></div>
           <div class="hero-content p-20 flex-col lg:flex-row">
-            <div class="text-center text-white lg:text-left">
-              <h1 class="text-5xl font-bold">
+            <div class="text-white">
+              <h1 class="text-5xl font-bold w-3/4">
                 Welcome to the <span class="text-[#797DFC]">ReTro</span>
                 Forum
               </h1>
@@ -124,7 +124,9 @@
                     class="input w-3/4"
                     placeholder="Search here anything"
                   />
-                  <button class="btn bg-[#797DFC] text-white rounded-full px-4">
+                  <button
+                    class="btn border-none bg-[#797DFC] text-white rounded-full px-4"
+                  >
                     Search
                   </button>
                 </div>
@@ -199,19 +201,48 @@
                     <span id="time">5 min</span>
                   </p>
                   <div class="card-actions justify-end">
-                    <img src="./assets/images/mark-as-read.png" alt="mark" />
+                    <button id="mark-as-read-btn">
+                      <img src="./assets/images/mark-as-read.png" alt="mark" />
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div id="mark-as-read" class="col-span-3 p-5 bg-[#12132D0D] rounded-xl">
+          <div
+            id="mark-as-read-container"
+            class="col-span-3 p-5 bg-[#12132D0D] rounded-xl"
+          >
             <div class="flex justify-between">
               <span class="font-bold">Title</span>
               <span>
                 <!-- <img src="./assets/images/mark.png" alt="mark" /> -->
                 Mark as read (<span id="mark-as-read-counter">0</span>)
               </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Join our Forum section -->
+      <section>
+        <div class="hero bg-[#12132D] rounded-xl my-16">
+          <div class="hero-content p-20 flex-col lg:flex-row">
+            <div class="text-white">
+              <h2 class="text-3xl font-bold">Join Our Forum</h2>
+              <p class="py-6">
+                Share your favorite opinion and win and wp forum coffee mug!
+                Yes, you can run unit tests and view the results directly within
+                the app.
+              </p>
+
+              <button
+                class="btn border-none bg-[#797DFC] text-white rounded-full px-8"
+              >
+                Registered Now
+              </button>
+            </div>
+            <div class="card shrink-0 w-full max-w-xs">
+              <img src="./assets/images/joinforum.png" alt="joinforum" />
             </div>
           </div>
         </div>
