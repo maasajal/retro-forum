@@ -4,7 +4,7 @@ const retroForum = async (categoryName = "") => {
   const res = await fetch(url);
   const data = await res.json();
   const posts = data.posts;
-  console.log(posts);
+  //   console.log(posts);
   displayPosts(posts);
 };
 const latestPosts = async () => {
@@ -59,7 +59,7 @@ const displayPosts = (posts) => {
             </p>
         </div>
         <div class="card-actions justify-end">
-            <button onclick='markAsReadCount()'>
+            <button onclick='markAsReadCount(${post?.id})'>
             <img src="./assets/images/mark-as-read.png" alt="mark" />
             </button>
         </div>
@@ -124,12 +124,37 @@ const loadingPosts = (isLoading) => {
   }
 };
 
-const markAsReadCount = () => {
+const markAsReadCount = async (id) => {
+  console.log("ID: ", id);
+  const res = await fetch(
+    "https://openapi.programming-hero.com/api/retro-forum/posts"
+  );
+  const data = await res.json();
+  const postId = data.posts;
+  const readIt = document.getElementById("mark-as-read-container");
+  const markCard = document.createElement("div");
+  markCard.classList =
+    "bg-white p-4 rounded-xl flex justify-between items-center mt-4";
+
+  postId.forEach((post) => {
+    // console.log(post.id);
+    if (id === post.id) {
+      markCard.innerHTML = `
+        <h2 class="text-md">${post?.title}</h2>
+        <p class="flex items-center gap-2">
+            <img src="./assets/images/views.png" alt="views" />
+            <span>${post?.view_count}</span>
+        </p>
+      `;
+    }
+  });
+  readIt.appendChild(markCard);
+  //   Mark as read Counter
   const markCounter = document.getElementById("mark-as-read-counter");
   let totalRead = parseInt(markCounter.innerText);
   totalRead += 1;
   markCounter.innerText = totalRead;
-//   console.log(totalRead);
+  //   console.log(totalRead);
 };
 retroForum();
 latestPosts();
