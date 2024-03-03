@@ -5,7 +5,7 @@ const retroForum = async () => {
   );
   const data = await res.json();
   const posts = data.posts;
-//   console.log(posts);
+  //   console.log(posts);
   displayPosts(posts);
 };
 const latestPosts = async () => {
@@ -69,11 +69,14 @@ const displayPosts = (posts) => {
     `;
     retroPostsContainer.appendChild(postCard);
   });
+  loadingPosts(false);
 };
 const displayLatestPosts = (latestPosts) => {
-const latestPostsContainer = document.getElementById('latest-posts-container')
-latestPosts.forEach((post) => {
-    const latestPost = document.createElement('div');
+  const latestPostsContainer = document.getElementById(
+    "latest-posts-container"
+  );
+  latestPosts.forEach((post) => {
+    const latestPost = document.createElement("div");
     latestPost.classList = "card border-2 p-5";
     latestPost.innerHTML = `
     <figure>
@@ -101,7 +104,20 @@ latestPosts.forEach((post) => {
     </div>
     `;
     latestPostsContainer.appendChild(latestPost);
-})
-}
+  });
+  loadingPosts(false);
+};
+
+const loadingPosts = (isLoading) => {
+  const loadingData = document.getElementById("loading-data");
+  const loadingLatestData = document.getElementById("loading-latest-data");
+  if (isLoading) {
+    loadingData.classList.remove("hidden");
+    loadingLatestData.classList.remove("hidden");
+  } else {
+    loadingData.classList.add("hidden");
+    loadingLatestData.classList.add("hidden");
+  }
+};
 retroForum();
 latestPosts();
