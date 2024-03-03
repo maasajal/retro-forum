@@ -97,7 +97,7 @@ const displayLatestPosts = (latestPosts) => {
         <img class="w-16 rounded-full" src="${post?.profile_image}" alt="author photo" />
         <div>
             <h3 class="text-lg">${post?.author?.name}</h3>
-            <p>${post?.author?.designation}</p>
+            <p>${post?.author?.designation || "Unknown"}</p>
         </div>
         </div>
     </div>
