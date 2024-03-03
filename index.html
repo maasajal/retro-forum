@@ -169,59 +169,10 @@
         </div>
         <!-- main card section -->
         <div class="grid grid-cols-1 sm:grid-cols-8 gap-4 my-5">
-          <div id="retro-card-container" class="col-span-5">
-            <div class="card card-side p-5 bg-[#12132D0D] rounded-xl">
-              <button class="btn btn-ghost btn-circle">
-                <div class="indicator">
-                  <img
-                    class=""
-                    src="./assets/images/home-icon.png"
-                    alt="Online"
-                  />
-                  <span
-                    class="badge badge-xs badge-success indicator-item"
-                  ></span>
-                </div>
-              </button>
-              <div class="card-body">
-                <p>
-                  # <span id="category" class="mr-8">Music</span> Author:
-                  <span id="author-name">Awlad Hossain</span>
-                </p>
-                <h2 class="card-title">
-                  10 Kids Unaware of Their Halloween Costume
-                </h2>
-                <p class="py-4">
-                  It’s one thing to subject yourself to ha Halloween costume
-                  mishap because, hey that’s your prerogative
-                </p>
-                <div class="flex justify-between border-t-2 border-dashed pt-4">
-                  <div class="flex gap-8">
-                    <p class="flex items-center gap-2">
-                      <img src="./assets/images/comments.png" alt="comments" />
-                      <span id="comments">560</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                      <img src="./assets/images/views.png" alt="views" />
-                      <span id="views">1568</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                      <img src="./assets/images/time.png" alt="time" />
-                      <span id="time">5 min</span>
-                    </p>
-                  </div>
-                  <div class="card-actions justify-end">
-                    <button id="mark-as-read-btn">
-                      <img src="./assets/images/mark-as-read.png" alt="mark" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="retro-posts-container" class="col-span-5"></div>
           <div
             id="mark-as-read-container"
-            class="col-span-3 p-5 bg-[#12132D0D] rounded-xl"
+            class="col-span-3 p-5 bg-[#12132D0D] rounded-xl max-h-max"
           >
             <div class="flex justify-between">
               <span class="font-bold">Title</span>
@@ -230,7 +181,9 @@
                 Mark as read (<span id="mark-as-read-counter">0</span>)
               </span>
             </div>
-            <div class="bg-white p-4 rounded-xl flex justify-center items-center mt-4">
+            <div
+              class="bg-white p-4 rounded-xl flex justify-center items-center mt-4"
+            >
               <h2 class="text-md">
                 10 Kids Unaware of Their Halloween Costume
               </h2>
