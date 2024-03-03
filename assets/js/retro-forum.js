@@ -88,7 +88,7 @@ const displayLatestPosts = (latestPosts) => {
     <div class="pt-4">
         <p class="flex gap-2 py-4">
         <img src="./assets/images/calender.png" alt="calender" /><span
-            >${post?.author?.posted_date}</span
+            >${post?.author?.posted_date || "No publish date"}</span
         >
         </p>
         <h2 class="card-title">${post?.title}</h2>
@@ -107,6 +107,7 @@ const displayLatestPosts = (latestPosts) => {
   loadingPosts(false);
 };
 const searchPosts = () => {
+  loadingPosts(true);
   const searchPostByCategory = document.getElementById("search-posts");
   const searchCategory = searchPostByCategory.value;
   retroForum(searchCategory);
@@ -115,9 +116,12 @@ const searchPosts = () => {
 const loadingPosts = (isLoading) => {
   const loadingData = document.getElementById("loading-data");
   const loadingLatestData = document.getElementById("loading-latest-data");
+
   if (isLoading) {
-    loadingData.classList.remove("hidden");
-    loadingLatestData.classList.remove("hidden");
+    setTimeout(() => {
+      loadingData.classList.remove("hidden");
+      loadingLatestData.classList.remove("hidden");
+    }, 2000);
   } else {
     loadingData.classList.add("hidden");
     loadingLatestData.classList.add("hidden");
@@ -125,7 +129,7 @@ const loadingPosts = (isLoading) => {
 };
 
 const markAsReadCount = async (id) => {
-  console.log("ID: ", id);
+//   console.log("ID: ", id);
   const res = await fetch(
     "https://openapi.programming-hero.com/api/retro-forum/posts"
   );
