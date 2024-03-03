@@ -1,10 +1,9 @@
-console.log("JS connected");
 const retroForum = async (categoryName = "") => {
   const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`;
   const res = await fetch(url);
   const data = await res.json();
   const posts = data.posts;
-  console.log(posts);
+  //   console.log(posts);
   displayPosts(posts);
 };
 const latestPosts = async () => {
@@ -22,14 +21,8 @@ const displayPosts = (posts) => {
     const postCard = document.createElement("div");
     postCard.classList =
       "card card-side p-5 bg-[#12132D0D] rounded-xl mb-5 hover:bg-[#797DFC1A] delay-200";
-    let badgeActivity = '';
-    if(post.isActive) {
-        badgeActivity = 'badge-success';
-    } else {
-        badgeActivity = 'badge-error';
-    }
     postCard.innerHTML = `
-    <figure class="pr-2 mb-28">
+    <div class="pr-2 mt-10">
         <button class="btn btn-ghost btn-circle">
             <div class="indicator">
             <img
@@ -38,11 +31,13 @@ const displayPosts = (posts) => {
                 alt="Online"
             />
             <span id="badge-activity"
-                class="badge badge-xs ${badgeActivity} indicator-item"
+                class="badge badge-xs ${
+                  post.isActive ? "badge-success" : "badge-error"
+                } indicator-item"
             ></span>
             </div>
         </button>
-    </figure>
+    </div>
     <div class="card-body">
         <p>
         # <span id="category" class="mr-8">${post?.category}</span> Author:
@@ -51,7 +46,7 @@ const displayPosts = (posts) => {
         <h2 class="card-title">${post?.title}</h2>
         <p class="py-4">${post?.description}</p>
         <div class="flex justify-between border-t-2 border-dashed pt-4">
-        <div class="flex gap-8">
+        <div class="flex gap-4 sm:gap-6">
             <p class="flex items-center gap-2">
             <img src="./assets/images/comments.png" alt="comments" />
             <span id="comments">${post?.comment_count}</span>
@@ -105,7 +100,7 @@ const displayLatestPosts = (latestPosts) => {
           post?.profile_image
         }" alt="author photo" />
         <div>
-            <h3 class="text-lg">${post?.author?.name}</h3>
+            <h3 class="text-lg">${post?.author?.name || "Unknown Author"}</h3>
             <p>${post?.author?.designation || "Unknown"}</p>
         </div>
         </div>

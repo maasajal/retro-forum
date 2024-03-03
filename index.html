@@ -14,17 +14,17 @@
   <body>
     <header class="container mx-auto px-4">
       <!-- header section -->
-      <nav class="py-10">
+      <nav class="py-5 sm:py-10">
         <div class="navbar bg-base-100 flex flex-col sm:flex-row">
           <div class="navbar-start">
             <a class="btn btn-ghost text-xl"
               ><img src="./assets/images/logo.png" alt="ReTro logo" /><span
-                class="text-blue-400 text-3xl font-bold"
+                class="text-[#797DFC] text-3xl font-bold"
                 >MaaS</span
               ></a
             >
           </div>
-          <div class="dropdown navbar-end">
+          <div class="dropdown navbar-center">
             <div tabindex="0" role="button" class="btn btn-ghost sm:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@
                 </div>
               </li>
               <li>
-                <div class="tooltip" data-tip="Flag">
+                <div class="tooltip" data-tip="Bookmark">
                   <button class="btn btn-circle border-none">
                     <img src="./assets/images/flag-icon.png" alt="flag" />
                   </button>
@@ -91,7 +91,7 @@
                 <img src="./assets/images/user-plus-icon.png" alt="user" />
               </button>
             </div>
-            <div class="tooltip" data-tip="Flag">
+            <div class="tooltip" data-tip="Bookmark">
               <button class="btn btn-circle">
                 <img src="./assets/images/flag-icon.png" alt="flag" />
               </button>
@@ -103,56 +103,54 @@
         </div>
       </nav>
       <!-- Banner section -->
-      <div>
-        <div
-          class="hero rounded-xl"
-          style="background-image: url(./assets/images/bgbanner.png)"
-        >
-          <div class="hero-overlay bg-[#12132D] rounded-xl"></div>
-          <div class="hero-content p-20 flex-col lg:flex-row">
-            <div class="text-white">
-              <h1 class="text-5xl font-bold w-3/4">
-                Welcome to the <span class="text-[#797DFC]">ReTro</span>
-                Forum
-              </h1>
-              <p class="py-6 w-3/4">
-                Share your favorite opinion and win and wp forum coffee mug!
-              </p>
-              <div class="px-4 w-3/4 bg-white rounded-full">
-                <div class="join py-1 flex justify-between">
-                  <input
-                    id="search-posts"
-                    class="input w-3/4 text-black"
-                    placeholder="Search here anything"
-                  />
-                  <button
-                    onclick="searchPosts()"
-                    class="btn border-none bg-[#797DFC] text-white rounded-full px-4"
-                  >
-                    Search
-                  </button>
-                </div>
+      <div
+        class="hero rounded-xl"
+        style="background-image: url(./assets/images/bgbanner.png)"
+      >
+        <div class="hero-overlay bg-[#12132D] rounded-xl"></div>
+        <div class="hero-content p-5 md:p-20 flex-col lg:flex-row">
+          <div class="text-white">
+            <h1 class="text-5xl font-bold sm:w-3/4">
+              Welcome to the <span class="text-[#797DFC]">ReTro</span>
+              Forum
+            </h1>
+            <p class="py-6 sm:w-3/4">
+              Share your favorite opinion and win and wp forum coffee mug!
+            </p>
+            <div class="px-4 sm:w-3/4 bg-white rounded-full">
+              <div class="join py-1 flex justify-between">
+                <input
+                  id="search-posts"
+                  class="input w-3/4 text-black"
+                  placeholder="Search here anything"
+                />
+                <button
+                  onclick="searchPosts()"
+                  class="btn border-none bg-[#797DFC] text-white rounded-full px-4"
+                >
+                  Search
+                </button>
               </div>
             </div>
-            <div class="card shrink-0 w-full max-w-xs shadow-2xl bg-base-100">
-              <div class="card-body">
-                <p class="flex justify-between">
-                  <span>Registered Users</span>
-                  <span>01</span>
-                </p>
-                <p class="flex justify-between">
-                  <span>Forum</span>
-                  <span>01</span>
-                </p>
-                <p class="flex justify-between">
-                  <span>Topics</span>
-                  <span>01</span>
-                </p>
-                <p class="flex justify-between">
-                  <span>Replies</span>
-                  <span>01</span>
-                </p>
-              </div>
+          </div>
+          <div class="card shrink-0 w-full max-w-xs shadow-2xl bg-base-100">
+            <div class="card-body">
+              <p class="flex justify-between">
+                <span>Registered Users</span>
+                <span>01</span>
+              </p>
+              <p class="flex justify-between">
+                <span>Forum</span>
+                <span>01</span>
+              </p>
+              <p class="flex justify-between">
+                <span>Topics</span>
+                <span>01</span>
+              </p>
+              <p class="flex justify-between">
+                <span>Replies</span>
+                <span>01</span>
+              </p>
             </div>
           </div>
         </div>
@@ -184,24 +182,13 @@
               </span>
             </div>
             <div id="mark-as-read-container"></div>
-            <!-- <div
-              class="bg-white p-4 rounded-xl flex justify-center items-center mt-4"
-            >
-              <h2 class="text-md">
-                10 Kids Unaware of Their Halloween Costume
-              </h2>
-              <p class="flex items-center gap-2">
-                <img src="./assets/images/views.png" alt="views" />
-                <span id="views">1568</span>
-              </p>
-            </div> -->
           </div>
         </div>
       </section>
       <!-- Join our Forum section -->
       <section>
         <div class="hero bg-[#12132D] rounded-xl my-16">
-          <div class="hero-content p-20 flex-col lg:flex-row">
+          <div class="hero-content p-8 md:p-20 flex-col lg:flex-row">
             <div class="text-white">
               <h2 class="text-3xl font-bold">Join Our Forum</h2>
               <p class="py-6">
@@ -243,7 +230,12 @@
     </main>
     <footer class="footer footer-center p-10 bg-[#12132D0D]">
       <aside>
-        <img src="./assets/images/logo.png" alt="logo" />
+        <a class="btn btn-ghost text-xl"
+          ><img src="./assets/images/logo.png" alt="ReTro logo" /><span
+            class="text-[#797DFC] text-3xl font-bold"
+            >MaaS</span
+          ></a
+        >
         <p class="max-w-lg">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC
