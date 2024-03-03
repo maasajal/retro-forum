@@ -20,9 +20,9 @@ const displayPosts = (posts) => {
   retroPostsContainer.textContent = "";
   posts.forEach((post) => {
     const postCard = document.createElement("div");
-    postCard.classList = "card card-side p-5 bg-[#12132D0D] rounded-xl mb-5";
+    postCard.classList = "card card-side p-5 bg-[#12132D0D] rounded-xl mb-5 hover:bg-[#797DFC1A] delay-200";
     postCard.innerHTML = `
-    <figure class="pr-2">
+    <figure class="pr-2 mb-28">
         <button class="btn btn-ghost btn-circle">
             <div class="indicator">
             <img
