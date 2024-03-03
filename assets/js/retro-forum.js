@@ -1,8 +1,7 @@
 console.log("JS connected");
-const retroForum = async () => {
-  const res = await fetch(
-    "https://openapi.programming-hero.com/api/retro-forum/posts"
-  );
+const retroForum = async (search = "") => {
+  const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${search}`;
+  const res = await fetch(url);
   const data = await res.json();
   const posts = data.posts;
   //   console.log(posts);
@@ -18,7 +17,7 @@ const latestPosts = async () => {
 };
 const displayPosts = (posts) => {
   const retroPostsContainer = document.getElementById("retro-posts-container");
-  //   retroPostsContainer.textContent = '';
+  retroPostsContainer.textContent = "";
   posts.forEach((post) => {
     const postCard = document.createElement("div");
     postCard.classList = "card card-side p-5 bg-[#12132D0D] rounded-xl mb-5";
@@ -107,7 +106,12 @@ const displayLatestPosts = (latestPosts) => {
   });
   loadingPosts(false);
 };
-
+const searchPosts = () => {
+  const searchPostByCategory = document.getElementById("search-posts");
+  const searchCategory = searchPostByCategory.value;
+  retroForum(searchCategory);
+  searchPostByCategory.value = "";
+};
 const loadingPosts = (isLoading) => {
   const loadingData = document.getElementById("loading-data");
   const loadingLatestData = document.getElementById("loading-latest-data");
