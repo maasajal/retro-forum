@@ -4,7 +4,7 @@ const retroForum = async (categoryName = "") => {
   const res = await fetch(url);
   const data = await res.json();
   const posts = data.posts;
-  //   console.log(posts);
+  console.log(posts);
   displayPosts(posts);
 };
 const latestPosts = async () => {
@@ -20,7 +20,14 @@ const displayPosts = (posts) => {
   retroPostsContainer.textContent = "";
   posts.forEach((post) => {
     const postCard = document.createElement("div");
-    postCard.classList = "card card-side p-5 bg-[#12132D0D] rounded-xl mb-5 hover:bg-[#797DFC1A] delay-200";
+    postCard.classList =
+      "card card-side p-5 bg-[#12132D0D] rounded-xl mb-5 hover:bg-[#797DFC1A] delay-200";
+    let badgeActivity = '';
+    if(post.isActive) {
+        badgeActivity = 'badge-success';
+    } else {
+        badgeActivity = 'badge-error';
+    }
     postCard.innerHTML = `
     <figure class="pr-2 mb-28">
         <button class="btn btn-ghost btn-circle">
@@ -30,8 +37,8 @@ const displayPosts = (posts) => {
                 src="${post.image}"
                 alt="Online"
             />
-            <span
-                class="badge badge-xs badge-success indicator-item"
+            <span id="badge-activity"
+                class="badge badge-xs ${badgeActivity} indicator-item"
             ></span>
             </div>
         </button>
@@ -94,7 +101,9 @@ const displayLatestPosts = (latestPosts) => {
         <h2 class="card-title">${post?.title}</h2>
         <p class="py-4">${post?.description}</p>
         <div class="flex gap-4">
-        <img class="w-16 rounded-full" src="${post?.profile_image}" alt="author photo" />
+        <img class="w-16 rounded-full" src="${
+          post?.profile_image
+        }" alt="author photo" />
         <div>
             <h3 class="text-lg">${post?.author?.name}</h3>
             <p>${post?.author?.designation || "Unknown"}</p>
@@ -129,7 +138,7 @@ const loadingPosts = (isLoading) => {
 };
 
 const markAsReadCount = async (id) => {
-//   console.log("ID: ", id);
+  //   console.log("ID: ", id);
   const res = await fetch(
     "https://openapi.programming-hero.com/api/retro-forum/posts"
   );
