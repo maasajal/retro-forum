@@ -1,10 +1,10 @@
 console.log("JS connected");
-const retroForum = async (search = "") => {
-  const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${search}`;
+const retroForum = async (categoryName = "") => {
+  const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${categoryName}`;
   const res = await fetch(url);
   const data = await res.json();
   const posts = data.posts;
-  //   console.log(posts);
+  console.log(posts);
   displayPosts(posts);
 };
 const latestPosts = async () => {
@@ -12,7 +12,7 @@ const latestPosts = async () => {
     "https://openapi.programming-hero.com/api/retro-forum/latest-posts"
   );
   const latestPosts = await res.json();
-  console.log(latestPosts);
+  //   console.log(latestPosts);
   displayLatestPosts(latestPosts);
 };
 const displayPosts = (posts) => {
@@ -59,7 +59,7 @@ const displayPosts = (posts) => {
             </p>
         </div>
         <div class="card-actions justify-end">
-            <button id="mark-as-read-btn">
+            <button onclick='markAsReadCount()'>
             <img src="./assets/images/mark-as-read.png" alt="mark" />
             </button>
         </div>
@@ -122,6 +122,14 @@ const loadingPosts = (isLoading) => {
     loadingData.classList.add("hidden");
     loadingLatestData.classList.add("hidden");
   }
+};
+
+const markAsReadCount = () => {
+  const markCounter = document.getElementById("mark-as-read-counter");
+  let totalRead = parseInt(markCounter.innerText);
+  totalRead += 1;
+  markCounter.innerText = totalRead;
+//   console.log(totalRead);
 };
 retroForum();
 latestPosts();
