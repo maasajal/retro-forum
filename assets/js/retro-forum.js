@@ -114,7 +114,10 @@ const searchPosts = () => {
   loadingPosts(true);
   const searchPostByCategory = document.getElementById("search-posts");
   const searchCategory = searchPostByCategory.value;
-  retroForum(searchCategory);
+  //   retroForum(searchCategory);
+  setTimeout(() => {
+    retroForum(searchCategory);
+  }, 2000);
   searchPostByCategory.value = "";
 };
 const loadingPosts = (isLoading) => {
@@ -122,10 +125,8 @@ const loadingPosts = (isLoading) => {
   const loadingLatestData = document.getElementById("loading-latest-data");
 
   if (isLoading) {
-    setTimeout(() => {
-      loadingData.classList.remove("hidden");
-      loadingLatestData.classList.remove("hidden");
-    }, 2000);
+    loadingData.classList.remove("hidden");
+    loadingLatestData.classList.remove("hidden");
   } else {
     loadingData.classList.add("hidden");
     loadingLatestData.classList.add("hidden");
