@@ -5,8 +5,16 @@ const retroForum = async () => {
   );
   const data = await res.json();
   const posts = data.posts;
-  console.log(posts);
+//   console.log(posts);
   displayPosts(posts);
+};
+const latestPosts = async () => {
+  const res = await fetch(
+    "https://openapi.programming-hero.com/api/retro-forum/latest-posts"
+  );
+  const latestPosts = await res.json();
+  console.log(latestPosts);
+  displayLatestPosts(latestPosts);
 };
 const displayPosts = (posts) => {
   const retroPostsContainer = document.getElementById("retro-posts-container");
@@ -62,4 +70,38 @@ const displayPosts = (posts) => {
     retroPostsContainer.appendChild(postCard);
   });
 };
+const displayLatestPosts = (latestPosts) => {
+const latestPostsContainer = document.getElementById('latest-posts-container')
+latestPosts.forEach((post) => {
+    const latestPost = document.createElement('div');
+    latestPost.classList = "card border-2 p-5";
+    latestPost.innerHTML = `
+    <figure>
+        <img
+        src="${post?.cover_image}"
+        alt="latest ports"
+        class="rounded-xl"
+        />
+    </figure>
+    <div class="pt-4">
+        <p class="flex gap-2 py-4">
+        <img src="./assets/images/calender.png" alt="calender" /><span
+            >${post?.author?.posted_date}</span
+        >
+        </p>
+        <h2 class="card-title">${post?.title}</h2>
+        <p class="py-4">${post?.description}</p>
+        <div class="flex gap-4">
+        <img class="w-16 rounded-full" src="${post?.profile_image}" alt="author photo" />
+        <div>
+            <h3 class="text-lg">${post?.author?.name}</h3>
+            <p>${post?.author?.designation}</p>
+        </div>
+        </div>
+    </div>
+    `;
+    latestPostsContainer.appendChild(latestPost);
+})
+}
 retroForum();
+latestPosts();
